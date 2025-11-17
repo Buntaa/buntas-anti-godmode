@@ -7,7 +7,7 @@ AddEventHandler('gameEventTriggered', function(event, args)
         local currentHealth = GetEntityHealth(playerPed)
 
         if lastHealth ~= nil and currentHealth == lastHealth then
-            if not GetPlayerInvincible(PlayerId()) and currentHealth > 100 then
+            if not GetPlayerInvincible(PlayerId()) and currentHealth > GetPlayerMaxHealth(source) or 200 then
                 TriggerServerEvent('antigodmode:flag', GetPlayerServerId(PlayerId()), currentHealth)
             end
         end

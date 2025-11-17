@@ -10,4 +10,6 @@ AddEventHandler('antigodmode:flag', function(pid, health)
     else
         flaggedPlayers[src].timesFlagged = flaggedPlayers[src].timesFlagged + 1
     end
+
+    
 end)
