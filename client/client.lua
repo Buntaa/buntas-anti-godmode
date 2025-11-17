@@ -3,11 +3,11 @@ local lastChecked = 0
 
 AddEventHandler('gameEventTriggered', function(event, args)
     if event == "CEventNetworkEntityDamage" then
-        local playerPed = PlayerPedId()
+        local playerPed = GetPlayerPed(PlayerPedId())
         local currentHealth = GetEntityHealth(playerPed)
 
         if lastHealth ~= nil and currentHealth == lastHealth then
-            if not GetPlayerInvincible(PlayerId()) and currentHealth > GetPlayerMaxHealth(source) or 200 then
+            if not GetPlayerInvincible(PlayerId()) and currentHealth > GetEntityMaxHealth(playerPed) or 200 then
                 TriggerServerEvent('antigodmode:flag', GetPlayerServerId(PlayerId()), currentHealth)
             end
         end
